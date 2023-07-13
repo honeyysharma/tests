@@ -30,7 +30,7 @@ def bin_to_hex(bin_num):
             rem = str(b_num % 10000)
             if len(rem) % 4 != 0:
                 if not right:
-                    rem = rem.zfill(4)
+                    rem = rem.rjust(4, '0')
                 else:
                     rem = rem.ljust(4, '0')
             h_num = hex_map[rem] + h_num
@@ -51,4 +51,4 @@ def bin_to_hex(bin_num):
 
 
 if __name__ == "__main__":
-    print(bin_to_hex(101101.0))
+    print(bin_to_hex(101101.0)) #2D

@@ -13,11 +13,14 @@ def solution(A):
     # initialize a list, same length as input.
     output = [None] * len(A)
 
+    # create index dictionary to get index in the loop, efficient than doing A.index(image)
+    index_map = {image: index for index, image in enumerate(A)}
+
     # sort the input list to get the correct number padding.
     sorted_files = sorted(A)
     for image in sorted_files:
         # get the index of the image from the original list
-        index = A.index(image)
+        index = index_map[image]
 
         # check if the image matches the <name>.<padding>.<extension> pattern, valid extension is longer than 2 letters.
         if re.search(regex, image):

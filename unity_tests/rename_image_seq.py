@@ -34,14 +34,14 @@ def solution(A):
             name, num, ext = image.split('.')
 
             # create a key with name.extension (foo.jpg)
-            key = name + '.' + ext
+            key = ''.join([name, '.', ext])
 
             # check if the key exists in the image_map, if it doesn't, initialize counter by 0, then increment by 1
             # {foo.jpg: 2, bar.png: 1}
             image_map[key] = image_map.get(key, 0) + 1
 
             # get the counter from the image map and create the new name with the padding of 4 digits (foo.0002.jpg)
-            image = name + '.' + str(image_map[key]).zfill(4) + '.' + ext
+            image = ''.join([name, '.', str(image_map[key]).zfill(4), '.', ext])
 
         # if the image name doesn't match the pattern, add it to the original index unaltered.
         # if the image name matches the pattern, add the updated image name to the original index.
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     # A = ['foo.1.jpg', 'foo.2.jpg', 'bar.3.png', 'bar.4.png',]
     # A = ['foo.1.jpg', 'foo.2.jpg', 'foo.5.jpg', 'foo.3.jpg', 'foo.6.jpg', 'foo.4.jpg',]
 
-    A = ['foo.jpg', 'bar', 'foo.14.jpg', 'foo.16.jpg', 'foo.15.jpg', 'bar.16.png', 'bar.1.p', 'bar.j']
+    A = ['foo.jpg', 'bar', 'foo.14.jpg', 'foo.16.jpg', 'foo.15.jpg', 'bar.16.png', 'bar.17.png', 'bar.1.p', 'bar.j']
 
     result = solution(A)
     print(result)

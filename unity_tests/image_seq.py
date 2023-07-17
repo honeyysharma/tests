@@ -9,13 +9,25 @@ def solution(A):
     followed by two or more word characters (\w{2,}) until the end of the string ($).
     """
 
-    # the regex will filter out all the images not following the patter <name>.<padding>.<extension>, where extension
+    # the regex will filter out all the images not following the pattern <name>.<padding>.<extension>, where extension
     # length is less than 2
-    # next two lines wasn't part of the submitted answers.
-    regex = re.compile(r"\.\d+\.\w{2,}$")
-    A = [file for file in A if re.search(regex, file)]
 
-    for i in A:
+    # the block filtering the input matching and not matching the pattern of <name>.<padding>.<extension>,
+    # is not part of the submitted solution.
+    regex = re.compile(r"\.\d+\.\w{2,}$")
+
+    matched = []
+    unmatched = []
+
+    for img in A:
+        if re.search(regex, img):
+            matched.append(img)
+        else:
+            unmatched.append(img)
+
+    # original submission starts from here
+
+    for i in matched:
         img_contents = i.split('.')
         name, num, ext = img_contents[0], img_contents[1], img_contents[2]
         key = name + '.' + ext
@@ -36,7 +48,8 @@ def solution(A):
             res.insert(ind, name + '.' + str(i+1).zfill(4) + '.' + ext)
         output += res
 
-    return output
+    # added unmatched files back to the output (didn't add it to the original solution)
+    return output + unmatched
 
 
 if __name__ == "__main__":

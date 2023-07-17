@@ -16,7 +16,8 @@ def solution(A):
     # create index dictionary to get index in the loop, efficient than doing A.index(image)
     index_map = {image: index for index, image in enumerate(A)}
 
-    # sort the input list to get the correct number padding.
+    # sort the input list to get the correct padding and maintain the order, that is [2, 4, 3], 4 gets higher padding
+    # than 3
     sorted_files = sorted(A)
     for image in sorted_files:
         # get the index of the image from the original list

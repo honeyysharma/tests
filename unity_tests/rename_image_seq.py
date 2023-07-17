@@ -13,7 +13,7 @@ def solution(A):
     # initialize a list, same length as input.
     output = [None] * len(A)
 
-    # sort the input list to get the correct sequence
+    # sort the input list to get the correct number padding.
     sorted_files = sorted(A)
     for image in sorted_files:
         # get the index of the image from the original list

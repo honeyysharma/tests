@@ -2,10 +2,15 @@ import re
 
 
 def solution(A):
+    """
+    A function to rename the image sequences.
+    :param A: a list of image names
+    :return: a list of renamed image sequences, with original order
+    """
 
     # This pattern r"\.\d+\.\w{2,}$" matches a dot (\.) followed by one or more digits, followed by another dot (\.),
-    # followed by two or more word characters (\w{2,}) until the end of the string ($).
-    regex = re.compile(r"\.\d+\.\w{2,}$")
+    # followed by 1 or more word characters (\w) until the end of the string ($).
+    regex = re.compile(r"\.\d+\.\w{1,}$")
 
     # a dictionary to save image counter for each "name.ext" key, example: {"foo.jpg": 3, "bar.png" 1}
     image_map = dict()
@@ -51,8 +56,18 @@ if __name__ == "__main__":
     # A = ['foo.0001.jpg', 'foo.002.jpg', 'bar.0001.jpg',]
     # A = ['foo.2.jpg', 'foo.4.jpg', 'foo.6.jpg', 'foo.5.jpg']
     # A = ['foo.1.jpg', 'foo.2.jpg', 'foo.3.png', 'bar.4.png']
+    # A = ['foo.1.jpg', 'foo.2.jpg', ]
     # A = ['foo.jpg', 'foo.1.jpg', 'foo.2.jpg', 'foo.3.png', 'bar.4.png', 'bar.1.p']
-    A = ['foo.jpg', 'foo.1.jpg', 'foo.3.jpg', 'foo.2.jpg', 'bar.4.png', 'bar.1.p']
-    d = solution(A)
-    print(d)
+
+    # ======================== uncomment to run each test case ========================
+    # A = ['foo.1.jpg', 'foo.2.jpg', 'foo.3.jpg', 'foo.4.jpg', 'foo.5.jpg', 'foo.6.jpg', 'foo.7.jpg', 'foo.8.jpg', ]
+    # A = ['foo.11.jpg', 'foo.12.jpg', 'foo.13.jpg', 'foo.14.jpg',]
+    # A = ['foo.0001.jpg', 'foo.0002.jpg', 'foo.0003.png', 'foo.0004.png',]
+    # A = ['foo.1.jpg', 'foo.2.jpg', 'bar.3.png', 'bar.4.png',]
+    # A = ['foo.1.jpg', 'foo.2.jpg', 'foo.5.jpg', 'foo.3.jpg', 'foo.6.jpg', 'foo.4.jpg',]
+
+    A = ['foo.jpg', 'bar', 'foo.14.jpg', 'foo.16.jpg', 'foo.15.jpg', 'bar.16.png', 'bar.1.p', 'bar.j']
+
+    result = solution(A)
+    print(result)
 
